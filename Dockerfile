@@ -1,4 +1,4 @@
-FROM nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04
+FROM nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04
 MAINTAINER hirakawat
 
 
@@ -23,5 +23,7 @@ ENV LIBRARY_PATH /usr/local/nvidia/lib64:/usr/local/nvidia/lib:/usr/local/cuda/l
 RUN wget https://bootstrap.pypa.io/get-pip.py && python3 get-pip.py && \
         pip3 install --upgrade --no-cache-dir wheel six setuptools cython numpy scipy==1.2.0 \
                 matplotlib seaborn scikit-learn scikit-image pillow requests \
-                jupyterlab networkx h5py pandas plotly protobuf tqdm tensorboardX colorama setproctitle && \
-        pip3 install https://download.pytorch.org/whl/cu90/torch-1.0.0-cp35-cp35m-linux_x86_64.whl
+                jupyterlab networkx h5py pandas plotly protobuf tqdm tensorboardX colorama setproctitle \
+		torch torchvision
+
+#        pip3 install https://download.pytorch.org/whl/cu90/torch-1.0.0-cp35-cp35m-linux_x86_64.whl
